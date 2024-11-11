@@ -21,7 +21,7 @@ function convertTimeToWords(time) {
     12: 'twelve',
     13: 'thirteen',
     14: 'fourteen',
-    15: 'fifteen',
+    15: 'quarter',
     16: 'sixteen',
     17: 'seventeen',
     18: 'eighteen',
@@ -39,8 +39,8 @@ function convertTimeToWords(time) {
   };
 
   const [hour, minutes] = time.split(':');
-  let parsedHour = parseInt(hour, 2);
-  let parsedMinutes = parseInt(minutes, 2);
+  let parsedHour = parseInt(hour);
+  let parsedMinutes = parseInt(minutes);
 
   if (parsedHour === 0 && parsedMinutes === 0) {
     return 'midnight';
@@ -58,19 +58,12 @@ function convertTimeToWords(time) {
     return `${wordMap[parsedHour]} o'clock`;
   }
 
-  if (parsedMinutes === 15) {
-    return `quarter past ${wordMap[parsedHour]}`;
-  }
-
   if (parsedMinutes === 30) {
     return `half past ${wordMap[parsedHour]}`;
   }
 
   if (parsedMinutes > 30) {
     parsedMinutes = 60 - parsedMinutes;
-    if (parsedMinutes === 15) {
-      return `quarter to ${wordMap[parsedHour + 1]}`;
-    }
     return `${wordMap[parsedMinutes]} to ${wordMap[parsedHour + 1]}`;
   }
 
