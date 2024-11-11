@@ -39,8 +39,8 @@ function convertTimeToWords(time) {
   };
 
   const [hour, minutes] = time.split(':');
-  let parsedHour = parseInt(hour);
-  let parsedMinutes = parseInt(minutes);
+  let parsedHour = parseInt(hour, 10);
+  let parsedMinutes = parseInt(minutes, 10);
 
   if (parsedHour === 0 && parsedMinutes === 0) {
     return 'midnight';
